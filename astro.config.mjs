@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://sinanatlasuygun.github.io',
   base: '/',
+  outDir: './dist',
   vite: {
     plugins: [tailwindcss()],
   },
