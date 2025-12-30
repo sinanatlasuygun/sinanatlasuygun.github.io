@@ -1,0 +1,70 @@
+---
+import "../styles/global.css";
+import type { ProjectPreview } from '../app/data/project.data';
+
+interface Props {
+  project: ProjectPreview;
+  lang: 'tr' | 'en';
+}
+
+const { project, lang } = Astro.props;
+
+const isDone = project.complate;
+const statusColor = isDone ? "var(--sau-turquaz)" : "var(--sau-red)";
+---
+
+<div class="sau-gold-card group">
+  <div class="flex justify-between items-start p-6 pb-4">
+    <div class="flex flex-col">
+      <span class="text-[10px] font-black uppercase tracking-[3px] text-gold-force opacity-50 italic">
+        {project.type}
+      </span>
+      <span class="text-3xl font-black italic text-gold-force mt-1">
+        #{project.id.toString().padStart(2, '0')}
+      </span>
+    </div>
+    
+    <div class="flex items-center gap-2 border border-[#ffcc00]/30 px-3 py-1.5 rounded-full bg-black">
+      <div class="relative flex h-2.5 w-2.5">
+        {!isDone && <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={`background-color: ${statusColor}`}></span>}
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5" style={`background-color: ${statusColor}`}></span>
+      </div>
+      <span class="text-[10px] font-black uppercase text-gold-force">
+        {isDone ? (lang === 'tr' ? 'DONE' : 'DONE') : (lang === 'tr' ? 'PROG' : 'PROG')}
+      </span>
+    </div>
+  </div>
+
+  <div class="px-6">
+    <div class="sau-gold-img-container h-48 group-hover:border-[#ffcc00]">
+      <img 
+        src={project.image[lang]} 
+        alt={project.title[lang]}
+        class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" 
+      />
+    </div>
+  </div>
+
+  <div class="flex flex-col flex-1 p-6">
+    <h3 class="text-2xl font-black uppercase italic leading-none text-gold-force mb-3 line-clamp-2">
+      {project.title[lang]}
+    </h3>
+    
+    <p class="text-[13px] font-bold text-gold-force/60 italic leading-tight line-clamp-3 mb-4">
+      {project.summary[lang]}
+    </p>
+
+    <div class="mt-auto">
+      <a href={`/projects/${project.id}`} class="sau-gold-btn group/btn m-0">
+        <div class="flex flex-col">
+          <span class="text-[11px] font-black tracking-widest italic">
+            {lang === 'tr' ? 'PROJEYİ İNCELE' : 'VIEW PROJECT'}
+          </span>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" class="group-hover/btn:translate-x-1 transition-transform">
+          <path d="M5 12h14m-7-7 7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>

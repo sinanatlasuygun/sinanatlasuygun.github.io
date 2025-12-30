@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageWropper from "../components/PageWropper.astro";
+import ContentPageSkill from "../content/ContentPageSkill.astro";
+import { useTranslations } from "../i18n/utils";
+
+const lang = Astro.currentLocale as 'tr' | 'en' || 'tr';
+const t = useTranslations(lang);
+
+---
+
+<Layout title="Skills Lab">
+  <PageWropper bg="var(--sau-turquaz)" fg="var(--sau-fg-color)">
+    <ContentPageSkill/>
+  </PageWropper>
+</Layout>
+

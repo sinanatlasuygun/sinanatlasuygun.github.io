@@ -1,0 +1,111 @@
+---
+import "../styles/global.css";
+import { useTranslations } from '../i18n/utils';
+
+const lang = Astro.currentLocale as 'tr' | 'en' || 'tr';
+const t = useTranslations(lang);
+
+const { pathname } = Astro.url;
+
+const cleanPath = pathname.replace(/^\/(tr|en)(\/|$)/, '/').replace(/^\/$/, '');
+const trHref = cleanPath === '' ? '/' : `/${cleanPath.replace(/^\//, '')}`;
+const enHref = cleanPath === '' ? '/en/' : `/en/${cleanPath.replace(/^\//, '')}`;
+
+const menuItems = [
+  { key: 'nav.home', link: lang === 'tr' ? '/' : '/en/', icon: '🏠' },
+  { key: 'nav.who', link: lang === 'tr' ? '/aboutme' : '/en/aboutme', icon: '👤' },
+  { key: 'nav.skill', link: lang === 'tr' ? '/skill' : '/en/skill', icon: '⚡' },
+  { key: 'nav.project', link: lang === 'tr' ? '/project' : '/en/project', icon: '💻' },
+  { key: 'nav.certification', link: lang === 'tr' ? '/certification' : '/en/certification', icon: '📜' },
+  { key: 'nav.contact', link: lang === 'tr' ? '/contact' : '/en/contact', icon: '📧' },
+];
+---
+
+<button id="m-btn" class="fixed top-4 left-4 z-[100] bg-[#2a3335] text-white w-12 h-12 rounded-2xl shadow-2xl flex items-center justify-center cursor-pointer border-none outline-none">
+  <span id="m-icon" class="text-2xl">☰</span>
+</button>
+
+<div id="m-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[80] hidden opacity-0 transition-opacity duration-300"></div>
+
+<aside id="m-sidebar" class="fixed top-0 left-0 h-full w-[280px] bg-[var(--sau-bg-color)] text-[var(--sau-fg-color)] z-[90] border-r border-black/10 dark:border-white/10 shadow-2xl transition-transform duration-300 -translate-x-full overflow-y-auto">
+  <div class="p-8 flex flex-col h-full pt-20">
+    
+    <div class="mb-10">
+      <h2 class="text-3xl font-black italic uppercase tracking-tighter">{t('nav.title')}</h2>
+      <div class="h-1.5 w-10 bg-[var(--sau-red)]"></div>
+    </div>
+
+    <nav class="flex flex-col gap-2">
+      {menuItems.map(item => (
+        <a href={item.link} class="flex items-center gap-4 p-4 rounded-[20px] hover:bg-black/5 dark:hover:bg-white/5 transition-all text-current font-black uppercase text-sm tracking-widest no-underline">
+          <span class="text-2xl">{item.icon}</span>
+          <span>{t(item.key as any)}</span>
+        </a>
+      ))}
+    </nav>
+
+    <div class="mt-auto border-t border-black/10 dark:border-white/10 pt-6 space-y-4">
+      
+      <div class="flex bg-black/5 dark:bg-white/5 p-1 rounded-xl">
+        <button id="t-light" class="flex-1 py-2 rounded-lg text-[10px] font-black transition-all border-none cursor-pointer bg-transparent text-zinc-500">☀️ LIGHT</button>
+        <button id="t-dark" class="flex-1 py-2 rounded-lg text-[10px] font-black transition-all border-none cursor-pointer bg-transparent text-zinc-500">🌙 DARK</button>
+      </div>
+
+      <div class="flex bg-black/5 dark:bg-white/5 p-1 rounded-xl">
+         <a href={trHref} class={`flex-1 text-center py-2 rounded-lg text-[10px] font-black no-underline transition-all ${lang === 'tr' ? 'bg-[#2a3335] text-white shadow-lg' : 'text-zinc-500 hover:text-black dark:hover:text-white'}`}>TR</a>
+         <a href={enHref} class={`flex-1 text-center py-2 rounded-lg text-[10px] font-black no-underline transition-all ${lang === 'en' ? 'bg-[#2a3335] text-white shadow-lg' : 'text-zinc-500 hover:text-black dark:hover:text-white'}`}>EN</a>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<script is:inline>
+  function setupSidebar() {
+    const sidebar = document.getElementById('m-sidebar');
+    const overlay = document.getElementById('m-overlay');
+    const btn = document.getElementById('m-btn');
+    const icon = document.getElementById('m-icon');
+    const lBtn = document.getElementById('t-light');
+    const dBtn = document.getElementById('t-dark');
+
+    if (!sidebar || !btn) return;
+
+    const toggleSidebar = () => {
+      const isHidden = sidebar.classList.contains('-translate-x-full');
+      sidebar.classList.toggle('-translate-x-full');
+      overlay.classList.toggle('hidden', !isHidden);
+      setTimeout(() => overlay.style.opacity = isHidden ? '1' : '0', 10);
+      icon.innerText = isHidden ? '✕' : '☰';
+    };
+
+    btn.onclick = toggleSidebar;
+    overlay.onclick = toggleSidebar;
+
+    const applyTheme = (mode) => {
+      if (mode === 'dark') {
+        document.documentElement.classList.add('dark');
+        if(dBtn && lBtn) {
+          dBtn.style.background = '#2a3335'; dBtn.style.color = 'white';
+          lBtn.style.background = 'transparent'; lBtn.style.color = '#71717a';
+        }
+      } else {
+        document.documentElement.classList.remove('dark');
+        if(dBtn && lBtn) {
+          lBtn.style.background = '#2a3335'; lBtn.style.color = 'white';
+          dBtn.style.background = 'transparent'; dBtn.style.color = '#71717a';
+        }
+      }
+      localStorage.setItem('theme', mode);
+    };
+
+    lBtn.onclick = () => applyTheme('light');
+    dBtn.onclick = () => applyTheme('dark');
+
+    const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    applyTheme(savedTheme);
+  }
+
+  setupSidebar();
+  
+  document.addEventListener('astro:after-swap', setupSidebar);
+</script>

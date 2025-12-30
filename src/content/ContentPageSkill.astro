@@ -1,0 +1,83 @@
+---
+import { SKILLS, getSkillByType, lenSkillByType } from "../app/data/skill.data";
+import { useTranslations } from "../i18n/utils";
+
+const lang = Astro.currentLocale as 'tr' | 'en' || 'tr';
+const t = useTranslations(lang);
+
+const categories = [
+  { id: "Software", title: "Core Software", color: "var(--sau-red)" },
+  { id: "Tool", title: "Dev Tools", color: "var(--sau-gold)" },
+  { id: "ARCH", title: "Architecture", color: "#8B5CF6" },
+  { id: "FRAMEWORK", title: "Frameworks", color: "#10B981" }
+];
+---
+
+<main class="min-h-screen p-2 flex flex-col bg-transparent">
+    
+    <header class="w-full pt-32 pb-12 border-b-2 border-black/10 flex justify-between items-end px-6">
+      <div>
+        <h1 class="text-6xl md:text-8xl font-black uppercase italic leading-[0.8] tracking-tighter text-black">
+          SKILLS <span class="text-white">LAB</span>
+        </h1>
+        <p class="text-black/60 font-black tracking-[8px] mt-4 uppercase italic text-[10px]">
+          ENGINEERING_CAPABILITIES_V2
+        </p>
+      </div>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-8">
+      {categories.map((cat) => {
+        const groupSkills = getSkillByType(cat.id);
+        const count = lenSkillByType(cat.id);
+        
+        return (
+          <section class="sau-skill-lab-card group">
+            <div class="flex justify-between items-center mb-10">
+              <div class="flex items-center gap-4">
+                <div class="w-4 h-4 rotate-45" style={`background-color: ${cat.color}`}></div>
+                <h2 class="text-3xl font-black italic uppercase tracking-tighter text-white">{cat.title}</h2>
+              </div>
+              <span class="text-xs font-black text-white/30 tracking-widest italic">Nº {count}</span>
+            </div>
+
+            <div class="sau-skill-bar-bg mb-12 flex items-stretch h-5 bg-white/5 rounded-full overflow-hidden border border-white/10 shadow-inner">
+              {groupSkills.map((skill) => (
+                <div 
+                  style={`width: ${skill.percent}%; background-color: ${skill.color};`}
+                  class="h-full transition-all duration-300 hover:brightness-125 border-r border-black/20 last:border-r-0"
+                >
+                  </div>
+              ))}
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
+              {groupSkills.map((skill) => (
+                <div class="flex flex-col gap-2 group/line">
+                  <div class="flex justify-between items-end">
+                    <span class="text-sm font-black uppercase italic text-white/80 group-hover/line:text-white transition-colors">
+                      {skill.name}
+                    </span>
+                    <span class="text-[9px] font-black text-white/40 italic">% {skill.percent}</span>
+                  </div>
+                  <div class="w-full h-[2px] bg-white/10 rounded-full overflow-hidden">
+                    <div 
+                      class="h-full transition-all duration-700" 
+                      style={`width: ${skill.percent}%; background-color: ${skill.color}; opacity: 0.8;`}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        );
+      })}
+    </div>
+
+    <footer class="w-full mt-auto py-16 flex flex-col md:flex-row justify-between items-center px-6 gap-6">
+       <span class="text-black/30 text-[9px] font-black uppercase italic tracking-[5px]">S.U. LAB SYSTEM</span>
+       <p class="text-black text-[10px] md:text-xs font-black uppercase tracking-[15px] md:tracking-[25px] italic text-center">
+         {t('about.motto')}
+       </p>
+    </footer>
+</main>

@@ -1,0 +1,105 @@
+---
+import "../styles/global.css";
+import { useTranslations } from '../i18n/utils';
+
+import { SKILLS, lenSkillByType, getSkillByType } from '../app/data/skill.data';
+
+const lang = Astro.currentLocale as 'tr' | 'en' || 'tr';
+const t = useTranslations(lang);
+
+// Kategorileri datadaki 'type' alanıyla tam eşleşecek şekilde tanımlıyoruz
+const skillGroups = [
+  {
+    type: "Software",
+    title: "SOFTWARE",
+    label: "LANGUAGES",
+  },
+  {
+    type: "Tool",
+    title: "TOOLS",
+    label: "SYSTEMS",
+  },
+  {
+    type: "ARCH",
+    title: "ARCH",
+    label: "PATTERNS",
+  },
+  {
+    type: "FRAMEWORK",
+    title: "FRAMEWORK",
+    label: "LIBS",
+  }
+];
+
+const bgColor = "var(--sau-turquaz)"; // CSS değişkeninden alıyoruz
+---
+
+<div class="flex flex-col h-full py-4 px-2 select-none" style={`background-color: ${bgColor};`}>
+  
+  <div class="flex flex-col mb-8 border-b-4 border-black pb-2">
+    <div class="flex justify-between items-end">
+        <h2 class="text-5xl md:text-6xl font-black uppercase italic leading-[0.7] tracking-tighter text-black">
+          SKILLS <br/> <span class="text-white">LAB</span>
+        </h2>
+        <div class="flex flex-col items-end leading-none mb-1">
+            <span class="text-[10px] font-black uppercase tracking-[2px] text-black/60 italic">Capabilities</span>
+            <span class="text-2xl font-black text-black italic">v.2.0</span>
+        </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8 overflow-y-auto pr-1 custom-scrollbar">
+    {skillGroups.map((group) => {
+      // Datadan bu gruba ait yetenekleri çekiyoruz
+      const currentSkills = getSkillByType(group.type);
+      const totalCount = lenSkillByType(group.type);
+
+      return (
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center justify-between border-b border-black/20 pb-1">
+            <h3 class="text-sm font-black uppercase italic tracking-tighter text-black">{group.title}</h3>
+            <span class="text-[10px] font-bold bg-black text-white px-1 rounded-sm">
+              {totalCount < 10 ? `0${totalCount}` : totalCount}
+            </span>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <div class="flex w-full h-3 bg-black/10 rounded-full overflow-hidden p-[1px] shadow-inner border border-black/5">
+              {currentSkills.map((skill) => (
+                <div 
+                  style={`width: ${skill.percent}%; background-color: ${skill.color};`}
+                  class="h-full first:rounded-l-full last:rounded-r-full transition-all hover:scale-y-125 cursor-help relative group/tooltip"
+                >
+                  <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover/tooltip:block z-50">
+                    <div class="bg-black text-white text-[8px] font-bold px-2 py-1 rounded shadow-xl whitespace-nowrap uppercase italic border border-white/20">
+                      {skill.name} %{skill.percent}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div class="flex flex-col gap-0.5">
+              {currentSkills.map((skill) => (
+                <div class="flex items-center justify-between group/line">
+                  <div class="flex items-center gap-1.5">
+                    <div class="w-1.5 h-1.5 rounded-full group-hover/line:scale-150 transition-transform shadow-sm" style={`background-color: ${skill.color}`}></div>
+                    <span class="text-[9px] font-bold uppercase italic text-black/70 group-hover/line:text-black">{skill.name}</span>
+                  </div>
+                  <div class="flex-1 border-b border-black/5 mx-2 border-dotted"></div>
+                  <span class="text-[8px] font-black text-black/40 italic">%{skill.percent}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</div>
+
+<style>
+  .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+  .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.05); }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.2); border-radius: 10px; }
+</style>

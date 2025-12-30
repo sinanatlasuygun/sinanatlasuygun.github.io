@@ -1,0 +1,15 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageWropper from "../components/PageWropper.astro";
+import ContentPageAboutMe from "../content/ContentPageAboutMe.astro"
+import { useTranslations } from "../i18n/utils";
+
+const lang = Astro.currentLocale as 'tr' | 'en' || 'tr';
+const t = useTranslations(lang);
+---
+
+<Layout title={t('about.title.1') + " " + t('about.title.2')}>
+  <PageWropper bg="var(--sau-red)" fg="var(--sau-fg-color)"> 
+    <ContentPageAboutMe/>
+  </PageWropper>
+</Layout>

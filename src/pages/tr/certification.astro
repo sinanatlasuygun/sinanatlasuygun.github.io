@@ -1,0 +1,15 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ContentPageCertification from "../../content/ContentPageCertification.astro";
+import PageWropper from "../../components/PageWropper.astro";
+import { useTranslations } from "../../i18n/utils";
+
+const lang = Astro.currentLocale as 'tr' | 'en' || 'tr';
+const t = useTranslations(lang);
+---
+
+<Layout title="Certifications">
+  <PageWropper bg="var(--sau-plum)" fg="var(--sau-fg-color)">
+    <ContentPageCertification/>
+  </PageWropper>
+</Layout>

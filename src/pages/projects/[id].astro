@@ -1,0 +1,23 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageWropper from "../../components/PageWropper.astro";
+import ContentProjectID from "../../content/ContentProjectID.astro";
+import { PROJECTS } from "../../app/data/project.data"; 
+
+export async function getStaticPaths() {
+  return PROJECTS.map((project) => ({
+    params: { id: project.id.toString() },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const lang = Astro.currentLocale as 'tr' | 'en' || 'tr';
+const title = project.title[lang];
+---
+
+<Layout title={title}>
+  <PageWropper bg="var(--sau-gold)" fg="var(--sau-fg-color)">
+    <ContentProjectID project={project} />
+  </PageWropper>
+</Layout>

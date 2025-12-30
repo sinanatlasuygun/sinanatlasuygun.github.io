@@ -1,0 +1,21 @@
+---
+interface Props {
+  bg?: string; // Dışarıdan gelecek arka plan rengi
+  fg?: string; // Yazı/Çizgi rengi
+}
+
+const { bg = "var(--sau-bg-color)", fg = "var(--sau-fg-color)" } = Astro.props;
+---
+
+<div class="w-full min-h-screen p-2 pt-20 md:pt-28 box-border" style={`background-color: var(--sau-bg-color);`}>
+  <div 
+    class="w-full min-h-[calc(100vh-120px)] rounded-[4px] p-6 md:p-12 relative overflow-hidden transition-all duration-500"
+    style={`background-color: ${bg}; color: ${fg}; border: 1px solid ${fg}20;`}
+  >
+    <div class="absolute top-0 right-0 p-2 opacity-20 font-black text-[10px] italic">
+      SINAN_UYGUN // LAB_V1
+    </div>
+
+    <slot />
+  </div>
+</div>

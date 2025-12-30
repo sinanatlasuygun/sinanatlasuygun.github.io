@@ -1,0 +1,47 @@
+---
+import "../styles/global.css";
+import { useTranslations } from '../i18n/utils';
+const lang = Astro.currentLocale as 'tr' | 'en' || 'tr';
+const t = useTranslations(lang);
+---
+
+<div class="flex flex-col justify-between h-full py-2">
+  
+  <div class="flex flex-col mb-6">
+    <div class="mb-1">
+      <span class="text-[9px] font-black uppercase tracking-[4px] text-black opacity-80 italic">
+        {t('home.about.subtitle.1') || 'CREATIVE ARCHITECT'}
+      </span>
+    </div>
+    <h2 class="text-5xl md:text-6xl font-black uppercase italic leading-[0.8] tracking-tighter text-black select-none">
+      {t('home.about.title.1') || 'BEN'} <br/> 
+      <span class="text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.2)]">
+        {t('home.about.title.2') || 'KİMİM?'}
+      </span>
+    </h2>
+    
+    <p class="mt-4 text-[9px] font-bold uppercase tracking-widest text-white bg-black px-2 py-0.5 w-fit rotate-[-1deg]">
+       {t('home.about.subtitle.2') || 'Visualizing Logic'}
+    </p>
+  </div>
+
+  <div class="relative z-10 mb-6">
+    <p class="text-base md:text-lg font-black leading-tight text-black italic border-l-[6px] border-white pl-4 uppercase tracking-tighter">
+      {t('home.about.description') || "Amasya’dan Erciyes Bilgisayar’a uzanan bir mühendislik yolculuğu. Assembly’den Python’a, kodun en derinine inerken; fırçamı hiç bırakmadım. OOP ve MVC ile sistemler inşa ediyor, hobi olarak başladığım resim tutkumla dijital dünyaya estetik katıyorum."}
+    </p>
+  </div>
+
+  <div class="flex flex-col gap-2 w-full mt-auto">
+    <div class="flex justify-between text-[8px] font-black uppercase tracking-widest text-black opacity-80">
+      <span>{t('home.about.sub.1') || 'Code'}</span>
+      <span>{t('home.about.sub.2') || 'Art'}</span>
+    </div>
+    <div class="w-full h-3 bg-black/15 rounded-full overflow-hidden p-0.5 border border-black/5">
+      <div class="h-full bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.6)]" style="width: 50%;"></div>
+    </div>
+    <p class="text-[8px] font-bold italic text-black/60 text-right">
+      {t('home.about.sub.3') || '*Perfectly balanced'}
+    </p>
+  </div>
+
+</div>

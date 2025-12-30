@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sau-bg: var(--sau-bg-color);
+  --color-sau-fg: var(--sau-fg-color);
+  --color-sau-purple: #6236a7;
+  --color-sau-red: #e62727;
+  --color-sau-turquaz: #77bef0;
+  --color-sau-gold: #ffcc00;
+  --color-sau-plum: #500050;
+  --color-sau-skyblue: #2a3335;
+}
+
+:root {
+  --sau-bg-color: #f8f4ec;
+  --sau-fg-color: #2d204f;
+  --sau-purple: #6236a7;
+  --sau-red: #e62727;
+  --sau-turquaz: #77bef0;
+  --sau-gold: #ffcc00;
+  --sau-plum: #500050;
+  --sau-skyblue: #2a3335;
+}
+
+.dark {
+  --sau-bg-color: #121212; 
+  --sau-fg-color: #f8f4ec;
+}
+
+@layer components {
+
+  .sau-gold-card {
+    background-color: #000000 !important;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    border: 2px solid #ffcc00;
+    height: 520px;
+    border-radius: 20px; 
+  }
+  .sau-gold-card:hover { transform: translateY(-8px); box-shadow: 0px 15px 30px rgba(255, 204, 0, 0.15); }
+  .sau-gold-img-container { position: relative; overflow: hidden; border: 2px solid rgba(255, 204, 0, 0.2); transition: all 0.3s ease; border-radius: 15px; }
+  .sau-gold-btn { display: flex; align-items: center; justify-content: space-between; padding: 1rem; transition: all 0.3s ease; font-weight: 900; font-style: italic; text-transform: uppercase; border: 2px solid #ffcc00; background-color: #000000; color: #ffcc00; border-radius: 12px; margin: 0 20px 20px 20px; }
+  .sau-gold-btn:hover { background-color: #ffcc00; color: #000000 !important; }
+
+  .sau-skill-lab-card {
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px; 
+    @apply p-8 transition-all duration-500 backdrop-blur-md shadow-2xl;
+  }
+  .sau-skill-lab-card:hover {
+    border-color: var(--sau-turquaz);
+    transform: translateY(-5px);
+  }
+  .sau-skill-bar-bg {
+    background-color: rgba(255, 255, 255, 0.05);
+    width: 100%;
+    display: flex;
+    align-items: stretch; 
+    overflow: hidden;
+    border-radius: 999px; 
+  }
+
+  .sau-cert-card {
+    background-color: rgba(0, 0, 0, 0.4); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    @apply p-8 flex flex-col justify-between transition-all duration-500 relative overflow-hidden backdrop-blur-xl;
+  }
+
+  .sau-cert-card:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-color: #f8f4ec; 
+    transform: translateY(-8px);
+  }
+
+  .sau-cert-btn {
+    @apply mt-auto inline-flex items-center justify-between w-full px-5 py-4 text-[10px] font-black uppercase tracking-[3px] italic transition-all duration-300;
+    border: 2px solid #f8f4ec; 
+    border-radius: 12px;
+    color: #f8f4ec;
+  }
+
+  .sau-cert-btn:hover {
+    background-color: #f8f4ec;
+    color: #500050 !important; 
+  }
+  .sau-contact-main-card {
+    background-color: rgba(0, 0, 0, 0.15); 
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    @apply transition-all duration-500 backdrop-blur-md;
+  }
+
+  .sau-contact-sub-card {
+    border-radius: 20px;
+    @apply p-8 flex flex-col justify-between transition-all duration-500 overflow-hidden relative;
+  }
+
+
+  .sau-contact-hover:hover {
+    transform: scale(0.98);
+    filter: brightness(1.2);
+  }
+  .sau-project-box {
+    background-color: rgba(0, 0, 0, 0.85);
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    @apply p-8 md:p-12 shadow-2xl transition-all duration-500;
+  }
+
+  .sau-project-code-block {
+    background-color: #000000;
+    border-left: 8px solid var(--sau-gold);
+    border-radius: 12px;
+    @apply p-6 font-mono text-sm relative overflow-hidden;
+  }
+
+  .sau-project-sidebar-img {
+    border-radius: 20px;
+    border: 2px solid var(--sau-fg-color);
+    @apply overflow-hidden transition-all duration-500 shadow-xl;
+  }
+  .sau-project-box {
+    background-color: rgba(0, 0, 0, 0.9); /* Gold üstünde tam siyah patlar */
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    @apply p-10 md:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 backdrop-blur-xl;
+  }
+
+  .sau-project-code-terminal {
+    background-color: #050505;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 204, 0, 0.2);
+    @apply p-8 font-mono text-sm relative overflow-hidden shadow-inner;
+  }
+}
+@layer utilities {
+  .btn-sau-modern { display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.75rem 1.5rem; background-color: var(--sau-fg-color); color: var(--sau-bg-color); font-weight: 900; text-transform: uppercase; font-style: italic; letter-spacing: 2px; font-size: 10px; transition: all 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.1); position: relative; z-index: 10; }
+  .btn-sau-modern:hover { box-shadow: 6px 6px 0px var(--sau-purple); transform: translate(-3px, -3px); }
+  .text-ivory { color: #f8f4ec !important; }
+  .text-pitch-black { color: #000000 !important; }
+  .bg-navy { background-color: #2d204f !important; }
+  .border-ivory { border-color: #f8f4ec !important; }
+}

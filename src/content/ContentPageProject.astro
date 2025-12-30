@@ -1,0 +1,51 @@
+---
+import ProjectCard from "../components/ProjectCard.astro";
+import { PROJECTS, getProjectByType } from "../app/data/project.data";
+const lang = Astro.currentLocale as 'tr' | 'en' || 'tr';
+
+const softwareProjects = getProjectByType('Software');
+const artProjects = getProjectByType('Art');
+---
+
+<div class="w-full"> 
+    <div class="max-w-[1600px] mx-auto mb-16 text-center">
+        <span class="text-[10px] font-black tracking-[12px] uppercase mb-4 block italic" style="color: var(--sau-bg-color); opacity: 0.8;">
+            {lang === 'tr' ? 'ARŞİV V.01' : 'ARCHIVE V.01'}
+        </span>
+        
+        <h1 
+          class="text-6xl md:text-[8rem] lg:text-[10rem] font-black uppercase italic tracking-tighter leading-[0.8] select-none mb-10"
+          style="color: var(--sau-bg-color); text-shadow: 4px 4px 0px rgba(0,0,0,0.2);"
+        >
+          {lang === 'tr' ? 'PROJELERİM' : 'PROJECTS'}
+        </h1>
+        
+        <div class="flex flex-wrap justify-center gap-6 md:gap-12" style="color: var(--sau-bg-color);">
+            <div class="flex flex-col items-center">
+                <span class="opacity-70 text-[9px] font-black uppercase tracking-widest mb-1 italic">
+                    {lang === 'tr' ? 'Yazılım' : 'Software'}
+                </span>
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full bg-[#6236a7] animate-pulse"></div>
+                    <span class="text-4xl font-black italic">{softwareProjects.length.toString().padStart(2, '0')}</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center border-l border-white/20 pl-6 md:pl-12">
+                <span class="opacity-70 text-[9px] font-black uppercase tracking-widest mb-1 italic">
+                    {lang === 'tr' ? 'Sanat' : 'Art'}
+                </span>
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full bg-[#e62727]"></div>
+                    <span class="text-4xl font-black italic">{artProjects.length.toString().padStart(2, '0')}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {PROJECTS.map((project) => (
+        <ProjectCard project={project} lang={lang} />
+      ))}
+    </div>
+</div>

@@ -1,0 +1,66 @@
+---
+import { useTranslations } from '../i18n/utils';
+import { getMappedContacts } from "../app/data/contact.data";
+
+const lang = Astro.currentLocale as 'tr' | 'en' || 'tr';
+const t = useTranslations(lang);
+
+// Datadan eşlenmiş (mapped) listeyi çekiyoruz
+const contactList = getMappedContacts(0); 
+---
+
+<div class="flex flex-col justify-between h-full py-6 px-2">
+  
+  <div class="flex flex-col mb-6 md:mb-10">
+    <div class="mb-2">
+      <span class="text-[10px] md:text-[11px] font-black uppercase tracking-[4px] md:tracking-[6px] text-white/50 italic">
+        {t('home.contact.title.1')}
+      </span>
+    </div>
+    <h2 class="text-2xl sm:text-5xl md:text-7xl font-black uppercase italic leading-[0.9] md:leading-[0.8] tracking-tighter text-white select-none">
+      {t('home.contact.title.2')} <br/> 
+      <span class="text-[#00f2ff] drop-shadow-[0_0_15px_rgba(0,242,255,0.3)]">
+        {t('home.contact.title.3')} 
+      </span>
+    </h2>
+  </div>
+
+  <div class="flex flex-col gap-5">
+    {contactList.map((item) => (
+      <a 
+        href={item.link} 
+        target="_blank" 
+        class="group flex items-center justify-between border-b-2 border-white/5 pb-2 hover:border-[#00f2ff]/40 transition-all duration-300"
+      >
+        <div class="flex items-center gap-3">
+          <div 
+            class="w-2 h-2 rounded-full shadow-[0_0_8px_currentColor]" 
+            style={`background-color: ${item.color}; color: ${item.color};`}
+          ></div>
+          <span class="text-[12px] font-black uppercase tracking-[3px] text-white/40 group-hover:text-white transition-colors">
+  {
+
+    item.key.includes('.') 
+      ? t(item.key as any) 
+      : item.key
+  }
+</span>
+        </div>
+        
+        <span class="text-sm md:text-base font-bold text-white italic lowercase tracking-tight group-hover:translate-x-[-5px] transition-transform opacity-80 group-hover:opacity-100">
+          {item.value}
+        </span>
+      </a>
+    ))}
+  </div>
+
+  <div class="mt-12 flex justify-end">
+    <div class="flex items-center gap-2 px-4 py-2 border border-white/10 rounded-full bg-white/5 hover:bg-white/10 transition-all group">
+      <span class="text-[10px] font-black uppercase italic tracking-widest text-white/60 group-hover:text-[#00f2ff]">
+        {t('home.contact.sub')}
+      </span>
+      <div class="w-2 h-2 rounded-full bg-[#00f2ff] animate-ping"></div>
+    </div>
+  </div>
+
+</div>

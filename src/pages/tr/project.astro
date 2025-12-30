@@ -1,0 +1,18 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageWropper from "../../components/PageWropper.astro";
+import ContentPageProject from "../../content/ContentPageProject.astro";
+
+import { useTranslations } from "../../i18n/utils";
+const lang = Astro.currentLocale as 'tr' | 'en' || 'tr';
+const t = useTranslations(lang);
+
+
+const title = lang === 'tr' ? "Projelerim" : "My Projects";
+---
+
+<Layout title={title}>
+    <PageWropper bg="var(--sau-gold)" fg="var(--sau-fg-color)"> 
+      <ContentPageProject />
+    </PageWropper>
+</Layout>

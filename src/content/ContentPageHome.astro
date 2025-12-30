@@ -1,0 +1,41 @@
+---
+import "../styles/global.css";
+import { useTranslations } from '../i18n/utils';
+const lang = Astro.currentLocale as 'tr' | 'en' || 'tr';
+const t = useTranslations(lang);
+---
+
+<div class="flex flex-col md:flex-row items-center justify-between w-full gap-8 p-6 min-h-[400px]">
+  
+  <div class="flex flex-col flex-1 order-2 md:order-1">
+    <h1 class="text-4xl md:text-6xl font-black uppercase italic leading-none tracking-tighter mb-6">
+      {t('home.hero.title.1') || '"KODUN GÜCÜNÜ'} <br/> 
+      <span class="text-white/60">{t('home.hero.title.2') || 'SANATIN'}</span> {t('home.hero.title.3') || 'ESTETİĞİYLE'} <br/> 
+      {t('home.hero.title.4') || 'BİRLEŞTİRİYORUM."'}
+    </h1>
+
+    <div class="relative">
+      <p class="max-w-xl text-lg md:text-xl font-medium leading-relaxed opacity-95 italic border-l-4 border-white/40 pl-6">
+        {t('home.hero.sub') || "Yazılım dünyasında mantıkla inşa ediyor, dijital sanatta hayallerle renklendiriyorum. Hoş geldin, burası benim oyun alanım."}
+      </p>
+    </div>
+
+    <div class="mt-8 flex items-center gap-4">
+       <div class="px-4 py-1 rounded-full border border-white/20 text-[10px] font-bold uppercase tracking-widest">
+         Creative Developer
+       </div>
+       <div class="px-4 py-1 rounded-full border border-white/20 text-[10px] font-bold uppercase tracking-widest">
+         Digital Artist
+       </div>
+    </div>
+  </div>
+
+  <div class="flex-shrink-0 order-1 md:order-2">
+     <img 
+        src="/avatar.svg" 
+        class="w-48 h-48 md:w-[500px] md:h-[400px] object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.4)] hover:rotate-3 transition-all duration-500" 
+        alt="Astra Avatar" 
+     />
+  </div>
+
+</div>
