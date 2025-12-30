@@ -12,9 +12,23 @@ permissions:
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install, build, and upload with Astro
         uses: withastro/action@v3
+        # Eğer npm değil de pnpm veya bun kullanıyorsan buraya ekleme yapmamız gerekir.
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
