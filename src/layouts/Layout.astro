@@ -17,8 +17,9 @@ const t = useTranslations(lang);
         <title>{'Sinan Uygun'}</title>
         <ClientRouter />
     </head>
+    <Sidebar />
     <body>
-        <div class="fixed top-0 left-0 w-full z-[90] pointer-events-none">
+        <div class="fixed top-0 left-0 w-full z-[40] pointer-events-none">
             <div 
                 class="w-full p-4 md:p-6 flex flex-col justify-center items-center border-b border-[var(--sau-fg-color)]/5 transition-all duration-500" 
                 style="background-color: var(--sau-bg-color); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);"
@@ -28,7 +29,7 @@ const t = useTranslations(lang);
                         class="text-2xl md:text-4xl font-black uppercase italic tracking-tighter transition-all duration-300 hover:scale-105"
                         style="color: var(--sau-fg-color);"
                     >
-                        Sinan Uygun
+                        OXIDIAN
                     </h1>
                     <p class="text-[8px] md:text-[10px] font-bold uppercase tracking-[4px] opacity-40 leading-none mt-1" style={`color: var(--sau-fg-color);`}>
                         {lang === 'tr' ? 'BİLGİSAYAR MÜHENDİSİ' : 'COMPUTER ENGINEER'}
@@ -37,7 +38,7 @@ const t = useTranslations(lang);
             </div>
         </div>
 
-        <Sidebar />
+        
         <slot />
     </body>
 </html>

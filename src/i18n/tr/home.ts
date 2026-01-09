@@ -25,6 +25,7 @@ export const homeTranslations = {
     'home.contact.primary': 'Birincil Mail Adresim',
     'home.contact.secondary': 'İkincil Mail Adresim',
     'home.contact.github': 'Github Linki',
+    'home.contact.youtube': 'Youtube Linki',
     'home.contact.gitlab': 'GitLab Linki',
     'home.contact.sub':'Available for projects',
     'nav.title':'Menü',

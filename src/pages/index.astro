@@ -1,9 +1,7 @@
 ---
 import "../styles/global.css";
 import Layout from '../layouts/Layout.astro';
-
 import HomeCard from '../components/HomeCard.astro';
-
 import ContentPageHome from "../content/ContentPageHome.astro";
 import ContentProject from "../content/ContentProject.astro" ;
 import ContentSkill from "../content/ConentSkill.astro";
@@ -11,70 +9,47 @@ import ContentAboutMe from "../content/ContentAboutMe.astro";
 import ContentContact from "../content/ContentContact.astro";
 import ContentCertification from "../content/ContentCertification.astro";
 
-import { useTranslations } from '../i18n/utils';const lang = Astro.currentLocale as 'tr' | 'en' || 'tr';
+import { useTranslations } from '../i18n/utils';
+const lang = Astro.currentLocale as 'tr' | 'en' || 'tr';
 const t = useTranslations(lang);
 ---
 
-<Layout title="Home Page">
-  <div class="fixed top-0 left-0 w-full z-[90] pointer-events-none">
-  <div 
-    class="w-full p-4 md:p-6 flex justify-center items-center border-b border-[var(--sau-fg-color)]/5 transition-all duration-500" 
-    style="background-color: var(--sau-bg-color); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);"
-  >
-    <h1 
-      class="pointer-events-auto text-2xl md:text-4xl font-black uppercase italic tracking-tighter transition-all duration-300 hover:scale-105 cursor-pointer"
-      style="color: var(--sau-fg-color);"
-    >
-      Sinan Uygun
-    </h1>
-  </div>
-</div>
-
+<Layout title="Main Page">
   <main 
-    class="min-h-screen w-full p-2 flex flex-col gap-2 pt-18 md:pt-24" 
-    style={`background-color: var(--sau-bg-color);`}
+    class="min-h-screen w-full p-2 flex flex-col gap-2 pt-18 md:pt-24 bg-[#f8f4ec] dark:bg-[#121212]" 
   >
-    <HomeCard fullWidth={true} bg="var(--sau-purple)" fg="var(--sau-black)">
+    <HomeCard bg="#6236a7" fg="#ffffff">
       <ContentPageHome/>
     </HomeCard>
 
-    <div class="grid grid-cols-2 gap-2 w-full">
-      <HomeCard link="/aboutme" bg="var(--sau-red)" fg="var(--sau-black)" fullWidth={false}>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 w-full">
+      <HomeCard link="/aboutme" bg="#e62727" fg="#000000">
         <ContentAboutMe/>
       </HomeCard>
 
-      <HomeCard 
-        link="/skill" 
-        bg="var(--sau-turquaz)" 
-        fg="var(--sau-black)" 
-        fullWidth={false}
-      >
+      <HomeCard link="/skill" bg="#77bef0" fg="#000000">
         <ContentSkill/>
       </HomeCard>
     </div>
 
-    <HomeCard link="/project" bg="var(--sau-gold)" fg="var(--sau-black)" fullWidth={true}>
+    <HomeCard link="/project" bg="#ffcc00" fg="#000000">
       <ContentProject/>
     </HomeCard>
 
-    <div class="grid grid-cols-2 gap-2 w-full">
-      <HomeCard  link="/certification" bg="var(--sau-plum)" fg="var(--sau-white)" fullWidth={false}>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 w-full">
+      <HomeCard link="/certification" bg="#500050" fg="#ffffff">
         <ContentCertification/>
       </HomeCard>
 
-      <HomeCard link="/contact" bg="var(--sau-skyblue)" fg="var(--sau-white)" fullWidth={false}>
+      <HomeCard link="/contact" bg="#2a3335" fg="#ffffff">
         <ContentContact/>
       </HomeCard>
     </div>
 
     <footer class="mt-auto pt-8 pb-4 pr-2 self-end w-full flex justify-end items-center">
-  <p 
-    class="text-[10px] md:text-xs font-black uppercase italic tracking-[2px] md:tracking-widest opacity-60 transition-all hover:opacity-100" 
-    style="color: var(--sau-fg-color);"
-  >
-    {t('licence') || '© 2024 Sinan Uygun — Tasarım & Kod'}
-  </p>
-</footer>
-
+      <p class="text-[10px] md:text-xs font-black uppercase italic tracking-widest opacity-60 text-[#2d204f] dark:text-[#f8f4ec]">
+        {t('licence') || '© 2024 OXIDIAN — Tasarım & Kod'}
+      </p>
+    </footer>
   </main>
 </Layout>

@@ -5,6 +5,8 @@ const lang = Astro.currentLocale as 'tr' | 'en' || 'tr';
 
 const softwareProjects = getProjectByType('Software');
 const artProjects = getProjectByType('Art');
+
+const PROJECTS_PER_PAGE = 8; 
 ---
 
 <div class="w-full"> 
@@ -20,32 +22,165 @@ const artProjects = getProjectByType('Art');
           {lang === 'tr' ? 'PROJELERİM' : 'PROJECTS'}
         </h1>
         
-        <div class="flex flex-wrap justify-center gap-6 md:gap-12" style="color: var(--sau-bg-color);">
-            <div class="flex flex-col items-center">
-                <span class="opacity-70 text-[9px] font-black uppercase tracking-widest mb-1 italic">
+        <div class="flex flex-wrap justify-center gap-6 md:gap-12 select-none">
+            <button 
+                id="btn-software" 
+                class="filter-btn active flex flex-col items-center cursor-pointer transition-all hover:scale-110 group"
+            >
+                <span class="opacity-70 text-[24px] font-black uppercase tracking-widest mb-1 italic group-[.active]:opacity-100" style="color: var(--sau-bg-color);">
                     {lang === 'tr' ? 'Yazılım' : 'Software'}
                 </span>
-                <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 rounded-full bg-[#6236a7] animate-pulse"></div>
-                    <span class="text-4xl font-black italic">{softwareProjects.length.toString().padStart(2, '0')}</span>
+                <div class="flex items-center gap-2 border-2 border-transparent group-[.active]:border-black/20 group-[.active]:bg-black/10 p-3 rounded-2xl">
+                    <div class="w-2.5 h-2.5 rounded-full bg-[#6236a7] shadow-[0_0_10px_#6236a7]"></div>
+                    <span class="text-4xl font-black italic" style="color: var(--sau-bg-color);">{softwareProjects.length.toString().padStart(2, '0')}</span>
                 </div>
-            </div>
+            </button>
 
-            <div class="flex flex-col items-center border-l border-white/20 pl-6 md:pl-12">
-                <span class="opacity-70 text-[9px] font-black uppercase tracking-widest mb-1 italic">
+            <button 
+                id="btn-art" 
+                class="filter-btn active flex flex-col items-center cursor-pointer transition-all hover:scale-110 group border-l border-white/20 pl-6 md:pl-12"
+            >
+                <span class="opacity-70 text-[24px] font-black uppercase tracking-widest mb-1 italic group-[.active]:opacity-100" style="color: var(--sau-bg-color);">
                     {lang === 'tr' ? 'Sanat' : 'Art'}
                 </span>
-                <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 rounded-full bg-[#e62727]"></div>
-                    <span class="text-4xl font-black italic">{artProjects.length.toString().padStart(2, '0')}</span>
+                <div class="flex items-center gap-2 border-2 border-transparent group-[.active]:border-black/20 group-[.active]:bg-black/10 p-3 rounded-2xl">
+                    <div class="w-2.5 h-2.5 rounded-full bg-[#e62727] shadow-[0_0_10px_#e62727]"></div>
+                    <span class="text-4xl font-black italic" style="color: var(--sau-bg-color);">{artProjects.length.toString().padStart(2, '0')}</span>
                 </div>
-            </div>
+            </button>
         </div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {PROJECTS.map((project) => (
-        <ProjectCard project={project} lang={lang} />
+        <div class="project-item" data-type={project.type}>
+            <ProjectCard project={project} lang={lang} />
+        </div>
       ))}
     </div>
+
+    <div id="pagination-wrapper" class="mt-20 flex justify-center items-center gap-8 pb-10 transition-opacity duration-300">
+        <button id="prev-page" class="bg-black text-[#ffcc00] p-5 rounded-full hover:bg-[#e62727] transition-all disabled:opacity-10 shadow-xl">
+            <span class="text-2xl font-black">←</span>
+        </button>
+        
+        <div class="flex flex-col items-center min-w-[120px]">
+            <span class="text-[10px] font-black uppercase tracking-[5px] opacity-40 italic font-bold" style="color: var(--sau-bg-color);">Sector_Pos</span>
+            <span id="page-info" class="text-2xl font-black italic" style="color: var(--sau-bg-color);">01 / 01</span>
+        </div>
+
+        <button id="next-page" class="bg-black text-[#ffcc00] p-5 rounded-full hover:bg-[#e62727] transition-all disabled:opacity-10 shadow-xl">
+            <span class="text-2xl font-black">→</span>
+        </button>
+    </div>
+    <footer class="max-w-7xl mx-auto py-24 border-t-2 border-black/10 mt-20 relative">
+    <div class="flex flex-col items-center gap-10">
+        
+        <div class="text-center space-y-4 group">
+            <p 
+                class="text-[12px] md:text-[16px] font-black uppercase italic tracking-[12px] md:tracking-[25px] leading-none text-black/80"
+            >
+                LOG_LEVEL: <span class="text-[#e62727]">FINAL</span> // ENCRYPTED_BY_OXIDIAN
+            </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center items-center gap-4 md:gap-8 bg-[#ffcc00] py-4 px-8 md:px-12 rounded-full shadow-lg border-2 border-black/10">
+            
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-black animate-pulse"></div>
+                <span class="text-[10px] font-black uppercase tracking-[2px] text-black">Core_Live</span>
+            </div>
+
+            <div class="hidden md:block w-px h-4 bg-black/20"></div>
+
+            <div class="text-[10px] font-black uppercase tracking-[2px] text-black">
+                Node: <span class="opacity-80">TR_KNY_042</span>
+            </div>
+
+            <div class="hidden md:block w-px h-4 bg-black/20"></div>
+
+            <div class="text-[10px] font-black uppercase tracking-[2px] text-black">
+                Sig: <span class="italic opacity-80">0x-SAU-2026</span>
+            </div>
+        </div>
+
+        <div class="flex flex-col items-center gap-2">
+            <span class="text-[9px] font-bold uppercase tracking-[5px] opacity-40 italic text-black">
+                Automated_System_Protocol // All Rights Reserved
+            </span>
+            <div class="flex gap-1 opacity-20">
+                <div class="w-10 h-1 bg-black"></div>
+                <div class="w-2 h-1 bg-black"></div>
+                <div class="w-6 h-1 bg-black"></div>
+            </div>
+        </div>
+    </div>
+</footer>
 </div>
+
+<style>
+    .filter-btn:not(.active) { opacity: 0.3; filter: grayscale(1); transform: scale(0.9); }
+    .project-item { animation: fadeIn 0.4s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+
+<script define:vars={{ PROJECTS_PER_PAGE }}>
+    let currentPage = 1;
+    let activeFilters = ["Software", "Art"]; 
+
+    const items = Array.from(document.querySelectorAll('.project-item'));
+    const btnSoftware = document.getElementById('btn-software');
+    const btnArt = document.getElementById('btn-art');
+    const pageInfo = document.getElementById('page-info');
+    const prevBtn = document.getElementById('prev-page');
+    const nextBtn = document.getElementById('next-page');
+
+    function updateUI() {
+        const filteredItems = items.filter(item => activeFilters.includes(item.dataset.type));
+        const totalPages = Math.ceil(filteredItems.length / PROJECTS_PER_PAGE) || 1;
+        
+        if (currentPage > totalPages) currentPage = totalPages;
+        const start = (currentPage - 1) * PROJECTS_PER_PAGE;
+        const end = start + PROJECTS_PER_PAGE;
+
+        items.forEach(item => item.style.display = 'none');
+        filteredItems.slice(start, end).forEach(item => item.style.display = 'block');
+
+        pageInfo.innerText = `${String(currentPage).padStart(2, '0')} / ${String(totalPages).padStart(2, '0')}`;
+        prevBtn.disabled = (currentPage === 1);
+        nextBtn.disabled = (currentPage === totalPages);
+        document.getElementById('pagination-wrapper').style.opacity = filteredItems.length > PROJECTS_PER_PAGE ? "1" : "0";
+    }
+
+    function handleFilter(clickedType) {
+        const otherType = clickedType === "Software" ? "Art" : "Software";
+
+        if (activeFilters.includes(clickedType)) {
+            if (activeFilters.length === 2) {
+                // İkisi de seçiliydi, tıklanılanı kapat, diğeri kalsın
+                activeFilters = [otherType];
+            } else {
+                // Sadece tıklanılan seçiliydi, onu kapatınca otomatik diğerini aç
+                activeFilters = [otherType];
+            }
+        } else {
+            // Seçili olmayana tıklandı, listeye ekle (ikisi birden aktif olur)
+            activeFilters.push(clickedType);
+        }
+
+        btnSoftware.classList.toggle('active', activeFilters.includes('Software'));
+        btnArt.classList.toggle('active', activeFilters.includes('Art'));
+        
+        currentPage = 1;
+        updateUI();
+    }
+
+    btnSoftware.addEventListener('click', () => handleFilter('Software'));
+    btnArt.addEventListener('click', () => handleFilter('Art'));
+    
+    prevBtn.addEventListener('click', () => { currentPage--; updateUI(); window.scrollTo({top: 200, behavior: 'smooth'}); });
+    nextBtn.addEventListener('click', () => { currentPage++; updateUI(); window.scrollTo({top: 200, behavior: 'smooth'}); });
+
+    updateUI();
+
+</script>

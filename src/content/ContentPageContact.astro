@@ -1,6 +1,12 @@
 ---
-import { CONTACT } from "../app/data/contact.data";
-const contact = CONTACT[0]; 
+import { useTranslations } from '../i18n/utils';
+import { getContactById } from "../app/data/contact.data";
+
+const lang = Astro.currentLocale as 'tr' | 'en' || 'tr';
+const t = useTranslations(lang);
+
+// Datadan ham veriyi çekiyoruz
+const contact = getContactById(0); 
 ---
 
 <main class="min-h-screen p-[8px] flex flex-col transition-colors duration-500 overflow-hidden relative bg-transparent">
@@ -11,35 +17,36 @@ const contact = CONTACT[0];
 
     <header class="w-full pt-32 pb-16 border-b-2 border-sau-fg/10 relative z-10 px-6">
       <span class="text-sau-red text-[10px] font-black tracking-[15px] uppercase italic block mb-6 opacity-70">
-        Transmission Protocol v4.0
+        {t('home.contact.title.1') || 'GET IN TOUCH'}
       </span>
       <h1 class="text-7xl md:text-[11rem] font-black uppercase italic leading-[0.8] tracking-tighter text-sau-fg">
-        GET IN <br/> <span class="text-white drop-shadow-2xl">TOUCH</span>
+        {t('home.contact.title.2') || 'GET IN'} <br/> 
+        <span class="text-white drop-shadow-2xl">{t('home.contact.title.3') || 'TOUCH'}</span>
       </h1>
     </header>
 
     <div class="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-[8px] mt-[8px] relative z-10">
       
-      <div class="lg:col-span-7 sau-contact-main-card p-8 md:p-16 flex flex-col justify-center gap-16 border-2 border-white/5">
+      <div class="lg:col-span-7 sau-contact-main-card p-8 md:p-16 flex flex-col justify-center gap-16 border-2 border-white/5 bg-white/5 backdrop-blur-sm rounded-[20px]">
         <section class="group">
-            <p class="text-sau-red font-black text-[10px] uppercase tracking-[8px] mb-6 italic opacity-60">/ Primary Entry</p>
-            <a href={`mailto:${contact.primary_mail}`} class="text-3xl md:text-6xl font-black italic break-all text-sau-fg hover:text-white transition-all duration-500">
-                {contact.primary_mail}
+            <p class="text-sau-red font-black text-[10px] uppercase tracking-[8px] mb-6 italic opacity-60">/ {t('home.contact.primary')}</p>
+            <a href={`mailto:${contact?.primary_mail}`} class="text-3xl md:text-6xl font-black italic break-all text-sau-fg hover:text-white transition-all duration-500">
+                {contact?.primary_mail}
             </a>
         </section>
 
         <section class="opacity-40 hover:opacity-100 transition-all duration-500 group">
-            <p class="text-sau-fg font-black text-[10px] uppercase tracking-[8px] mb-6 italic opacity-50">/ Secondary Route</p>
-            <a href={`mailto:${contact.secondary_mail}`} class="text-2xl md:text-3xl font-black italic break-all text-sau-fg underline underline-offset-8 decoration-sau-red/30 hover:decoration-sau-red transition-all">
-                {contact.secondary_mail}
+            <p class="text-sau-fg font-black text-[10px] uppercase tracking-[8px] mb-6 italic opacity-50">/ {t('home.contact.secondary')}</p>
+            <a href={`mailto:${contact?.secondary_mail}`} class="text-2xl md:text-3xl font-black italic break-all text-sau-fg underline underline-offset-8 decoration-sau-red/30 hover:decoration-sau-red transition-all">
+                {contact?.secondary_mail}
             </a>
         </section>
       </div>
 
       <div class="lg:col-span-5 flex flex-col gap-[8px]">
         
-        <a href={`https://${contact.linkedn}`} target="_blank" 
-           class="sau-contact-sub-card bg-sau-purple text-white group sau-contact-hover flex-1 min-h-[160px]">
+        <a href={`https://${contact?.linkedn}`} target="_blank" 
+           class="sau-contact-sub-card bg-sau-purple text-white group sau-contact-hover flex-1 min-h-[140px] p-8 rounded-[20px] transition-all">
             <div class="flex justify-between items-start">
                 <span class="font-black italic text-[10px] tracking-widest uppercase opacity-70">Connect</span>
                 <span class="text-3xl group-hover:translate-x-2 transition-transform italic">→</span>
@@ -47,27 +54,38 @@ const contact = CONTACT[0];
             <p class="text-4xl font-black italic uppercase tracking-tighter">LinkedIn</p>
         </a>
 
-        <div class="grid grid-cols-2 gap-[8px] flex-1">
-            <a href={`https://${contact.github}`} target="_blank" 
-               class="sau-contact-sub-card bg-black text-white group sau-contact-hover">
+        <a href={`https://${contact?.youtube}`} target="_blank" 
+           class="sau-contact-sub-card bg-[#CF0F0F] text-white group sau-contact-hover p-8 rounded-[20px] transition-all">
+            <div class="flex justify-between items-center">
+                <p class="text-3xl font-black italic uppercase tracking-tighter">YouTube</p>
+                <span class="text-[10px] font-black tracking-widest opacity-70">WATCH</span>
+            </div>
+        </a>
+
+        <div class="grid grid-cols-2 gap-[8px]">
+            <a href={`https://${contact?.github}`} target="_blank" 
+               class="sau-contact-sub-card bg-black text-white group sau-contact-hover p-6 rounded-[20px] transition-all">
                 <span class="font-black italic text-[9px] uppercase tracking-widest opacity-50">Source</span>
                 <p class="text-2xl font-black italic uppercase leading-none mt-4 text-sau-skyblue">GitHub</p>
             </a>
-            <a href={`https://${contact.gitlab}`} target="_blank" 
-               class="sau-contact-sub-card bg-white text-black group sau-contact-hover">
-                <span class="font-black italic text-[9px] uppercase tracking-widest opacity-30 text-sau-red">Repos</span>
-                <p class="text-2xl font-black italic uppercase leading-none mt-4 text-sau-red">GitLab</p>
-            </a>
+            <a href={`https://${contact?.gitlab}`} target="_blank" 
+            class="sau-contact-sub-card bg-[#FC6D26] text-white group sau-contact-hover p-6 rounded-[20px] transition-all shadow-lg shadow-[#FC6D26]/20">
+              <div class="flex justify-between items-start">
+                  <span class="font-black italic text-[9px] uppercase tracking-widest opacity-70 text-white">Repos</span>
+                  <span class="text-xl group-hover:rotate-45 transition-transform">↗</span>
+              </div>
+              <p class="text-2xl font-black italic uppercase leading-none mt-4">GitLab</p>
+          </a>
         </div>
 
-        <div class="bg-sau-fg text-sau-bg p-10 rounded-[20px] shadow-2xl">
-            <p class="text-[10px] font-black uppercase tracking-[6px] mb-6 opacity-40 italic">System_Status: Online</p>
+        <div class="bg-sau-fg text-sau-bg p-8 rounded-[20px] shadow-2xl">
+            <p class="text-[10px] font-black uppercase tracking-[6px] mb-4 opacity-40 italic">System_Status: Online</p>
             <div class="flex items-center gap-4">
                 <div class="relative flex h-3 w-3">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sau-red opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-3 w-3 bg-sau-red"></span>
                 </div>
-                <span class="text-sm font-black italic uppercase tracking-tighter">Availability: <span class="text-sau-red">Ready for projects</span></span>
+                <span class="text-sm font-black italic uppercase tracking-tighter">Availability: <span class="text-sau-red">{t('home.contact.sub')}</span></span>
             </div>
         </div>
 
@@ -75,12 +93,11 @@ const contact = CONTACT[0];
     </div>
 
     <footer class="w-full py-16 flex flex-col md:flex-row justify-between items-center px-6 mt-[8px]">
-      <p class="text-[9px] font-black uppercase tracking-[15px] opacity-20 italic">Designed_by_SAU_Lab</p>
+      <p class="text-[9px] font-black uppercase tracking-[15px] opacity-20 italic">Designed_by_OXIDIAN_Lab</p>
       <div class="flex gap-1.5 opacity-30">
         {Array.from({length: 16}).map((_, i) => (
             <div class="w-1 h-6 bg-sau-fg" style={`opacity: ${1 - (i * 0.06)}`}></div>
         ))}
       </div>
     </footer>
-
 </main>

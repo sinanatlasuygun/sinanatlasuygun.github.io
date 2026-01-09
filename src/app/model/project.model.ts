@@ -12,4 +12,5 @@ export interface Project {
   introduction: { tr: string; en: string };
   installization: { tr: string; en: string };
   usage:{ tr: string; en: string };
+  licance:string;
 }

@@ -9,6 +9,7 @@ const title = project.title[lang];
 const description = project.description[lang];
 const installation = project.installization[lang];
 const usage = project.usage[lang];
+const license = project.licance; 
 ---
 
 <main class="min-h-screen p-4 md:p-12 bg-transparent relative z-10">
@@ -17,10 +18,10 @@ const usage = project.usage[lang];
       <div class="flex flex-col md:flex-row justify-between items-end gap-10">
         <div class="space-y-6">
           <div class="flex items-center gap-4">
-             <span class={`px-5 py-2 text-[10px] font-black uppercase italic rounded-full shadow-lg ${project.complate ? 'bg-black text-[#ffcc00]' : 'bg-[#e62727] text-white'}`}>
+             <span class={`px-5 py-2 text-[12px] font-black uppercase italic rounded-full shadow-lg ${project.complate ? 'bg-black text-[#ffcc00]' : 'bg-[#e62727] text-white'}`}>
                 {project.complate ? (lang === 'tr' ? '● Tamamlandı' : '● Completed') : (lang === 'tr' ? '○ Devam Ediyor' : '○ In Progress')}
              </span>
-             <span class="text-black/40 text-[11px] font-black uppercase tracking-[6px] italic">/ System_Log_{project.id}</span>
+             <span class="text-black/80 text-[13px] font-black uppercase tracking-[4px] italic">/ System_Log_{project.id}</span>
           </div>
           <h1 class="text-6xl md:text-[10rem] font-black uppercase italic tracking-tighter leading-[0.8] text-black drop-shadow-sm">
             {title}
@@ -29,7 +30,7 @@ const usage = project.usage[lang];
         
         <div class="flex flex-wrap gap-2">
             {project.devlan.map((item: string) => (
-                <span class="bg-black text-white px-5 py-2 text-[10px] font-black italic uppercase tracking-widest rounded-lg">
+                <span class="bg-black text-white px-10 py-4 text-[16px] font-black italic uppercase tracking-widest rounded-lg">
                     {item}
                 </span>
             ))}
@@ -40,31 +41,30 @@ const usage = project.usage[lang];
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 py-24">
       
       <div class="lg:col-span-8 space-y-12">
-        
         <article class="sau-project-box text-white group">
-            <h2 class="text-[#ffcc00] text-[10px] font-black uppercase tracking-[12px] mb-10 italic opacity-50">01 // Executive_Summary</h2>
+            <h2 class="text-[#ffcc00] text-[10px] font-black uppercase tracking-[12px] mb-10 italic opacity-70">01 // Executive_Summary</h2>
             <p class="text-2xl md:text-4xl font-black leading-[1.1] italic tracking-tight text-white/90 group-hover:text-white transition-colors">
                 "{description}"
             </p>
         </article>
 
         <article class="sau-project-box text-white">
-            <h2 class="text-[#77bef0] text-[10px] font-black uppercase tracking-[12px] mb-10 italic opacity-50">02 // Deployment_Script</h2>
+            <h2 class="text-[#77bef0] text-[10px] font-black uppercase tracking-[12px] mb-10 italic opacity-70">02 // Deployment_Script</h2>
             <div class="sau-project-code-terminal">
-                <div class="flex gap-2 mb-8 opacity-30">
+                <div class="flex gap-2 mb-8 opacity-50">
                     <div class="w-2.5 h-2.5 rounded-full bg-[#ffcc00]"></div>
                     <div class="w-2.5 h-2.5 rounded-full bg-white/20"></div>
                     <div class="w-2.5 h-2.5 rounded-full bg-white/20"></div>
                 </div>
-                <code class="text-[#ffcc00]/90 block whitespace-pre-wrap leading-relaxed font-mono">
+                <code class="text-[#ffcc00] block whitespace-pre-wrap leading-relaxed font-mono font-bold">
                   $ {installation}
                 </code>
             </div>
         </article>
 
         <article class="sau-project-box text-white border-l-8 border-[#ffcc00]">
-            <h2 class="text-[#e62727] text-[10px] font-black uppercase tracking-[12px] mb-10 italic opacity-50">03 // Operation_Manual</h2>
-            <div class="text-xl md:text-2xl font-black italic text-white/70 leading-relaxed">
+            <h2 class="text-[#e62727] text-[10px] font-black uppercase tracking-[12px] mb-10 italic opacity-70">03 // Operation_Manual</h2>
+            <div class="text-xl md:text-2xl font-black italic text-white leading-relaxed">
                 {usage}
             </div>
         </article>
@@ -80,21 +80,34 @@ const usage = project.usage[lang];
                 <a href={project.link[lang]} target="_blank" class="flex items-center justify-between w-full bg-black text-[#ffcc00] p-7 text-xs font-black uppercase tracking-[5px] italic rounded-[15px] hover:bg-[#e62727] hover:text-white transition-all shadow-xl">
                     Access Source <span class="text-2xl">↗</span>
                 </a>
-                <button onclick="history.back()" class="flex items-center justify-between w-full border-2 border-black p-7 text-xs font-black uppercase tracking-[5px] italic rounded-[15px] hover:bg-black hover:text-white transition-all">
-                    Back to Lab <span>←</span>
+
+                {license && license !== "None" && (
+                    <div class="bg-[#ffcc00] p-6 rounded-[15px] border-4 border-black shadow-lg relative overflow-hidden group">
+                        <span class="text-[11px] font-black uppercase tracking-[4px] text-black/80 block mb-2 italic border-b border-black/20 pb-1">04 // Legal_Protocol</span>
+                        <p class="text-xl font-black italic uppercase leading-none text-black">
+                           {license}
+                        </p>
+                        <div class="absolute -right-2 -bottom-2 opacity-10 scale-150 rotate-12 font-black italic text-4xl text-black pointer-events-none">
+                            AUTH
+                        </div>
+                    </div>
+                )}
+
+                <button onclick="history.back()" class="flex items-center justify-between w-full bg-black text-[#ffcc00] p-7 text-xs font-black uppercase tracking-[5px] italic rounded-[15px] hover:bg-[#e62727] hover:text-white transition-all shadow-xl">
+                    Back to Lab <span class="text-2xl">←</span>
                 </button>
             </div>
 
-            <div class="p-8 bg-black/5 rounded-[20px] border border-black/10">
-                <span class="text-[9px] font-black uppercase tracking-widest opacity-40 block mb-2">Project_Checksum</span>
-                <code class="text-[10px] font-bold text-black opacity-60">SHA-256: SAU_PRJ_{project.id}_VER_2.0</code>
+            <div class="p-8 bg-black/10 rounded-[20px] border-2 border-black/20">
+                <span class="text-[11px] font-black uppercase tracking-widest text-black/80 block mb-2 font-bold">Project_Checksum</span>
+                <code class="text-[12px] font-bold text-black font-mono">SHA-256: SAU_PRJ_{project.id}_VER_2.0</code>
             </div>
         </div>
       </aside>
 
     </div>
 
-    <footer class="max-w-7xl mx-auto py-20 border-t border-black/10 flex justify-center">
-       <p class="text-black/20 text-[10px] font-black uppercase tracking-[30px] italic">Final_Transmission</p>
+    <footer class="max-w-7xl mx-auto py-20 border-t-2 border-black/10 flex justify-center">
+       <p class="text-black/60 text-[14px] font-black uppercase tracking-[15px] md:tracking-[30px] italic">Final_Transmission</p>
     </footer>
 </main>
