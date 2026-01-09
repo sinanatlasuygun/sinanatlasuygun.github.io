@@ -8,7 +8,8 @@ export const CONTACT = [
         youtube:"youtube.com/@OxidianOfficial",
         github: "github.com/oxidiancode",
         gitlab: "gitlab.com/sinanatlasuygun",
-        linkedn: "linkedin.com/in/sinanuygun"
+        linkedn: "linkedin.com/in/sinanuygun",
+        lospec: "lospec.com/oxidianart",
     }
 ];
 export const getContactById = (id: number) => {
@@ -25,6 +26,7 @@ export const getMappedContacts = (id: number) => {
         { key: 'home.contact.youtube' as const, value: c.youtube, link: `https://${c.youtube}`, color: '#CF0F0F' },
         { key: 'home.contact.github' as const, value: c.github, link: `https://${c.github}`, color: '#ffffff' },
         { key: 'home.contact.gitlab' as const, value: c.gitlab, link: `https://${c.gitlab}`, color: '#fca326' },
-        { key: 'LinkedIn' as const, value: c.linkedn, link: `https://${c.linkedn}`, color: '#0077b5' }
+        { key: 'LinkedIn' as const, value: c.linkedn, link: `https://${c.linkedn}`, color: '#0077b5' },
+        { key: 'LosPec' as const, value: c.lospec, link: `https://${c.lospec}`, color: '#FDB5CE' },
     ];
 };

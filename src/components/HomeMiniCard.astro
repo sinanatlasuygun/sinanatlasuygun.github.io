@@ -7,6 +7,7 @@ const { project } = Astro.props;
 
 
 const isSoftware = project.type === 'Software';
+const isArt = project.type === 'Art';
 const typeIcon = isSoftware ? "code" : "palette"; 
 
 const bg = "#111111"; 

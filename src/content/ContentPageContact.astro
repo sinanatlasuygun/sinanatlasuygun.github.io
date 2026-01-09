@@ -65,8 +65,8 @@ const contact = getContactById(0);
         <div class="grid grid-cols-2 gap-[8px]">
             <a href={`https://${contact?.github}`} target="_blank" 
                class="sau-contact-sub-card bg-black text-white group sau-contact-hover p-6 rounded-[20px] transition-all">
-                <span class="font-black italic text-[9px] uppercase tracking-widest opacity-50">Source</span>
-                <p class="text-2xl font-black italic uppercase leading-none mt-4 text-sau-skyblue">GitHub</p>
+                <span class="font-black italic text-[9px] uppercase tracking-widest opacity-70 text-white">Source</span>
+                <p class="text-2xl font-black italic uppercase leading-none mt-4 text-white">GitHub</p>
             </a>
             <a href={`https://${contact?.gitlab}`} target="_blank" 
             class="sau-contact-sub-card bg-[#FC6D26] text-white group sau-contact-hover p-6 rounded-[20px] transition-all shadow-lg shadow-[#FC6D26]/20">
@@ -75,6 +75,14 @@ const contact = getContactById(0);
                   <span class="text-xl group-hover:rotate-45 transition-transform">↗</span>
               </div>
               <p class="text-2xl font-black italic uppercase leading-none mt-4">GitLab</p>
+          </a>
+          <a href={`https://${contact?.lospec}`} target="_blank" 
+            class="sau-contact-sub-card bg-[#FDB5CE] text-white group sau-contact-hover p-6 rounded-[20px] transition-all shadow-lg shadow-[#FC6D26]/20">
+              <div class="flex justify-between items-start">
+                  <span class="font-black italic text-[9px] uppercase tracking-widest opacity-70 text-black">Galery</span>
+                  <span class="text-xl group-hover:rotate-45 transition-transform text-black">↗</span>
+              </div>
+              <p class="text-2xl font-black italic uppercase leading-none mt-4 text-black">LosPec</p>
           </a>
         </div>
 

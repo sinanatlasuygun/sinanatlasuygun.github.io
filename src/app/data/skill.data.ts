@@ -104,7 +104,7 @@ export const SKILLS: Skills[] = [
         id: 12,
         name: "VS Code",
         type: "Tool",
-        percent:60,
+        percent:40,
         color:"#1C4D8D",
         logo: "string",
         experience:""
@@ -142,6 +142,15 @@ export const SKILLS: Skills[] = [
         type: "FRAMEWORK",
         percent:40,
         color:"#AE75DA",
+        logo: "string",
+        experience:""
+    },
+    {
+        id: 17,
+        name: "Aseprite",
+        type: "Tool",
+        percent:20,
+        color:"#FDB5CE",
         logo: "string",
         experience:""
     },

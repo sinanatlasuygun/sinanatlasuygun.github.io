@@ -69,8 +69,89 @@ export const PROJECTS: Project[] = [
             en: "final color = DFColor(hex: '#000000');" 
         }
     },
+
+{
+    id: 3, 
+    complate: true, 
+    type: 'Art', 
+    devlan: ["Pixel Art"], 
+    licance: "None", 
+    title: { 
+        tr: "Forest Sanctuary: Pixel Edition", 
+        en: "Forest Sanctuary: Pixel Edition" 
+    },
+    summary: { 
+        tr: "100x100 canvas üzerinde, sınırlı palet kullanılarak tasarlanmış, atmosferik derinliğe sahip piksel sanat çalışması.", 
+        en: "An atmospheric pixel art piece with depth, designed on a 100x100 canvas using a limited color palette." 
+    },
+    description: { 
+        tr: "Bu çalışma, düşük çözünürlük kısıtlamaları altında doku ve ışık manipülasyonuna odaklanır. Çatıdaki yosun efektleri ve taş duvarlardaki gölgeleme, dither (noktalama) tekniği yerine doğrudan renk geçişleriyle sağlanmıştır. Mimari yapı, kuzey mitolojisindeki kulübelerden esinlenilerek 'çapraz kiriş' (cross-beam) detaylarıyla zenginleştirilmiştir.", 
+        en: "This work focuses on texture and light manipulation under low-resolution constraints. Moss effects on the roof and shading on stone walls are achieved through direct color transitions rather than dithering. The architecture is enriched with 'cross-beam' details inspired by Nordic cottages." 
+    },
+    developers: ["Sinan Uygun"],
+    image: { 
+        tr: "/art/forest_home.gif", 
+        en: "/art/forest_home.gif" 
+    },
+    link: { 
+        tr: "#", 
+        en: "#" 
+    },
+    installization: { 
+        tr: "Asset olarak oyun motorlarında (Unity, Godot) veya web arayüzlerinde dekoratif eleman olarak kullanılabilir.", 
+        en: "Can be used as an asset in game engines (Unity, Godot) or as a decorative element in web interfaces." 
+    },
+    introduction: { 
+        tr: "Geleneksel piksel disipliniyle oluşturulmuş dijital illüstrasyon.", 
+        en: "Digital illustration created with traditional pixel discipline." 
+    },
+    usage: { 
+        tr: "Görsel, atmosferik bir arka plan veya bir oyun içi mekan konsepti olarak sergilenmektedir.", 
+        en: "The visual is exhibited as an atmospheric background or an in-game location concept." 
+    }
+},
+{
+    id: 4, 
+    complate: true, 
+    type: 'Art',
+    devlan: ["Pixel Art"], 
+    licance: "None",
+    title: { 
+        tr: "Arcane Elixir: Frozen Depths", 
+        en: "Arcane Elixir: Frozen Depths" 
+    },
+    summary: { 
+        tr: "Cam kırılması, sıvı yansıması ve buz kristali partikülleri üzerine odaklanmış yüksek kontrastlı piksel illüstrasyon.", 
+        en: "A high-contrast pixel illustration focusing on glass refraction, liquid reflection, and ice crystal particles." 
+    },
+    description: { 
+        tr: "Bu çalışmada 'Anti-Aliasing' teknikleri kullanılarak camın kavisli yapısı yumuşatılmıştır. İçerideki sıvı için 4 farklı mavi tonu kullanılarak derinlik hissi yaratılmış, kristal parçacıkları için 'Specular Highlight' (parlama) noktaları stratejik olarak yerleştirilmiştir. Mantar tıpanın dokusu, sınırlı renk paletiyle organik bir materyal hissi verecek şekilde işlenmiştir.", 
+        en: "In this work, Anti-Aliasing techniques were used to smooth the curved structure of the glass. A sense of depth was created using 4 different blue tones for the liquid, and Specular Highlight points were strategically placed for the crystal particles. The texture of the cork stopper was rendered to give an organic material feel with a limited color palette." 
+    },
+    developers: ["Sinan Uygun"],
+    image: { 
+        tr: "/art/ice_elixir.png", 
+        en: "/art/ice_elixir.png" 
+    },
+    link: { 
+        tr: "#", 
+        en: "#" 
+    },
+    installization: { 
+        tr: "Oyun içi envanter öğesi, NFT koleksiyonu veya UI ikonu olarak ölçeklenebilir.", 
+        en: "Can be scaled as an in-game inventory item, NFT collection, or UI icon." 
+    },
+    introduction: { 
+        tr: "Fantezi RPG öğeleri için optimize edilmiş, düşük çözünürlüklü dijital varlık.", 
+        en: "Low-resolution digital asset optimized for fantasy RPG elements." 
+    },
+    usage: { 
+        tr: "Kullanıcı arayüzlerinde (UI) veya karakter yetenek ekranlarında dekoratif görsel olarak kullanılabilir.", 
+        en: "Can be used as a decorative visual in user interfaces (UI) or character skill screens." 
+    }
+},
     {
-        id: 3, 
+        id: 5, 
         complate: true, 
         type: 'Software',
         devlan: ["Python"],
@@ -107,7 +188,7 @@ export const PROJECTS: Project[] = [
         }
     },
     {
-        id: 4, 
+        id: 6, 
         complate: true, 
         type: 'Software',
         devlan: ["C"],
@@ -144,7 +225,7 @@ export const PROJECTS: Project[] = [
         }
     },
     {
-        id: 5, 
+        id: 7, 
         complate: true, 
         type: 'Software',
         devlan: ["C"],
@@ -181,7 +262,7 @@ export const PROJECTS: Project[] = [
         }
     },
     {
-        id: 6, 
+        id: 8, 
         complate: true, 
         type: 'Software',
         devlan: ["C"],
@@ -218,7 +299,7 @@ export const PROJECTS: Project[] = [
         }
     },
     {
-        id: 7, 
+        id: 9, 
         complate: true, 
         type: 'Software',
         devlan: ["C"],
@@ -254,6 +335,127 @@ export const PROJECTS: Project[] = [
             en: "After running the program, you can move the terminal cursor freely using the arrow keys." 
         }
     },
+    {
+    id: 10, 
+    complate: true, 
+    type: 'Art',
+    devlan: ["Pixel Art"], 
+    licance: "None",
+    title: { 
+        tr: "Vintage Gold Coin: 8-Bit Loop", 
+        en: "Vintage Gold Coin: 8-Bit Loop" 
+    },
+    summary: { 
+        tr: "Dairesel rotasyon ve ışık kırılması üzerine odaklanmış, sonsuz döngüye (loop) sahip 8-bit altın sikke animasyonu.", 
+        en: "An 8-bit gold coin animation with an infinite loop, focusing on circular rotation and light refraction." 
+    },
+    description: { 
+        tr: "Bu çalışmada, paranın dönüş efektini vermek için 'orthographic projection' mantığı kullanılmıştır. Animasyonun her karesinde parlayan (highlight) noktalar, merkezdeki gravür detayının derinliğini koruyacak şekilde kaydırılmıştır. Toplam 6 kareden oluşan döngü, akıcı bir illüzyon yaratmak için sabit hızda (constant framerate) optimize edilmiştir.", 
+        en: "In this work, the 'orthographic projection' logic was used to convey the rotation effect of the coin. Highlight points in each frame have been shifted to preserve the depth of the center engraving detail. The 6-frame loop is optimized at a constant framerate to create a smooth illusion." 
+    },
+    developers: ["Sinan Uygun"],
+    image: { 
+        tr: "/art/coin.gif", 
+        en: "/art/coin.gif" 
+    },
+    link: { 
+        tr: "#", 
+        en: "#" 
+    },
+    installization: { 
+        tr: "Oyun içi toplama öğesi (collectible) veya dijital cüzdan arayüzleri için optimize edilmiştir.", 
+        en: "Optimized for in-game collectibles or digital wallet interfaces." 
+    },
+    introduction: { 
+        tr: "Klasik arcade estetiğine sahip, düşük çözünürlüklü animasyonlu varlık.", 
+        en: "Low-resolution animated asset with classic arcade aesthetics." 
+    },
+    usage: { 
+        tr: "Web tabanlı oyunlarda, ödül sistemlerinde veya başarı ikonlarında kullanılabilir.", 
+        en: "Can be used in web-based games, reward systems, or achievement icons." 
+    }
+},
+    {
+    id: 11, 
+    complate: true, 
+    type: 'Art',
+    devlan: ["Pixel Art"], 
+    licance: "None",
+    title: { 
+        tr: "Goblin Raider: Frontal Sprite", 
+        en: "Goblin Raider: Frontal Sprite" 
+    },
+    summary: { 
+        tr: "RPG projeleri için optimize edilmiş, simetrik anatomi ve yüksek kontrastlı gölgeleme içeren 8-bit düşman karakter tasarımı.", 
+        en: "8-bit enemy character design featuring symmetric anatomy and high-contrast shading, optimized for RPG projects." 
+    },
+    description: { 
+        tr: "Bu çalışmada, karakterin tehditkar duruşunu pekiştirmek için 'top-down' perspektife uygun omuz ve kulak yapısı geliştirilmiştir. Kas hatları ve yüz ifadeleri için derin gölge (dark-outline) tekniği kullanılarak karakterin arka plandan ayrışması sağlanmıştır. Altın küpe detaylarındaki 'pixel-shimmer' etkisi, karakterin statüsünü ve görsel çeşitliliğini artırmak amacıyla eklenmiştir.", 
+        en: "In this work, the shoulder and ear structure suitable for a 'top-down' perspective was developed to reinforce the character's menacing stance. Dark-outline techniques were used for muscle lines and facial expressions to ensure the character stands out from the background. The 'pixel-shimmer' effect on the golden earring details was added to increase the character's status and visual variety." 
+    },
+    developers: ["Sinan Uygun"],
+    image: { 
+        tr: "/art/gobln.gif", 
+        en: "/art/gobln.gif" 
+    },
+    link: { 
+        tr: "#", 
+        en: "#" 
+    },
+    installization: { 
+        tr: "2D oyun motorlarında (Unity, Godot, RPG Maker) düşman birimi veya NPC olarak doğrudan kullanılabilir.", 
+        en: "Can be used directly as an enemy unit or NPC in 2D game engines (Unity, Godot, RPG Maker)." 
+    },
+    introduction: { 
+        tr: "Fantezi temalı oyun dünyaları için tasarlanmış yüksek kaliteli piksel karakter varlığı.", 
+        en: "High-quality pixel character asset designed for fantasy-themed game worlds." 
+    },
+    usage: { 
+        tr: "Savaş ekranlarında, diyalog pencerelerinde veya harita üzerinde düşman birimi olarak sergilenebilir.", 
+        en: "Can be displayed on battle screens, dialogue windows, or as an enemy unit on the map." 
+    }
+    },
+    {
+    id: 12, 
+    complate: true, 
+    type: 'Art',
+    devlan: ["Pixel Art"], 
+    licance: "None",
+    title: { 
+        tr: "Forbidden Fruit: Health Asset", 
+        en: "Forbidden Fruit: Health Asset" 
+    },
+    summary: { 
+        tr: "Yüksek doygunluklu renk paleti ve belirgin dış hatlar kullanılarak tasarlanmış, klasik envanter öğesi illüstrasyonu.", 
+        en: "Classic inventory item illustration designed using a high-saturation color palette and distinct outlines." 
+    },
+    description: { 
+        tr: "Bu çalışmada, objenin hacimsel formunu vurgulamak için dairesel gölgeleme teknikleri uygulanmıştır. Yaprak detayındaki yeşil kontrastı, meyvenin kırmızısıyla tamamlayıcı bir denge kurar. Yüzeydeki beyaz parlama noktaları (highlights), objeye taze ve etkileşime hazır bir materyal hissi kazandırır.", 
+        en: "In this work, circular shading techniques were applied to emphasize the volumetric form of the object. The green contrast in the leaf detail creates a complementary balance with the red of the fruit. White highlight points on the surface give the object a fresh and interaction-ready material feel." 
+    },
+    developers: ["Sinan Uygun"],
+    image: { 
+        tr: "/art/apple.png", 
+        en: "/art/apple.png" 
+    },
+    link: { 
+        tr: "#", 
+        en: "#" 
+    },
+    installization: { 
+        tr: "2D oyunlarda sağlık yenileme ikonu veya çevre etkileşim objesi olarak kullanılabilir.", 
+        en: "Can be used as a health regeneration icon or environmental interaction object in 2D games." 
+    },
+    introduction: { 
+        tr: "Basit formların piksel disipliniyle estetik bir görsele dönüştürüldüğü başlangıç seviyesi üstü çalışma.", 
+        en: "A beyond-beginner work where simple forms are transformed into aesthetic visuals with pixel discipline." 
+    },
+    usage: { 
+        tr: "HUD (Heads-up Display) arayüzlerinde veya toplama mekaniklerinde görsel materyal olarak sergilenmektedir.", 
+        en: "Exhibited as visual material in HUD (Heads-up Display) interfaces or collection mechanics." 
+    }
+},
+
 ];
 
 export const totalProjects = PROJECTS.length;
