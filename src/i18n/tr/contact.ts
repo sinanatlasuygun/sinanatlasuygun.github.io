@@ -1,7 +1,7 @@
 export const contactTranslations = {
-  "project.title": "PROJELERİM",
-  "project.subtitle": "DİJİTAL ARŞİV",
-  "project.view": "DETAYLARI GÖR",
-  "project.stack": "TEKNOLOJİ",
-  // ... diğerleri
+  "contact.title.1": "HADİ",
+  "contact.title.2":"KONUŞALIM!",
+  "contact.header":"GET IN TOUCH",
+  "contact.primary": "/ Birincil Mail Adresim",
+  "contact.secondary": "/ İkincil Mail Adresim",
 };

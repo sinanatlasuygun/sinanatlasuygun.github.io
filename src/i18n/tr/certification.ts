@@ -1,7 +1,6 @@
 export const certificationTranslations = {
-  "project.title": "PROJELERİM",
-  "project.subtitle": "DİJİTAL ARŞİV",
-  "project.view": "DETAYLARI GÖR",
-  "project.stack": "TEKNOLOJİ",
-  // ... diğerleri
+  "certification.title.1": "Benim",
+  "certification.title.2": "Sertifikalarım",
+  "certification.button": "Görüntüle",
+
 };

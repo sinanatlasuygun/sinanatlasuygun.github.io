@@ -157,14 +157,11 @@ const PROJECTS_PER_PAGE = 8;
 
         if (activeFilters.includes(clickedType)) {
             if (activeFilters.length === 2) {
-                // İkisi de seçiliydi, tıklanılanı kapat, diğeri kalsın
                 activeFilters = [otherType];
             } else {
-                // Sadece tıklanılan seçiliydi, onu kapatınca otomatik diğerini aç
                 activeFilters = [otherType];
             }
         } else {
-            // Seçili olmayana tıklandı, listeye ekle (ikisi birden aktif olur)
             activeFilters.push(clickedType);
         }
 
